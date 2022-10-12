@@ -50,7 +50,7 @@ nav {
 main {
     margin-top: 90px;
     padding: 10px;
-    width: 800px;
+    width: 700px;
     height: 1500px;
     margin: auto;
     position: relative;
@@ -59,14 +59,15 @@ main {
 section {
     background-color: #e6e5e4;
     padding: 10px;
-    margin: 15px;
+    margin: 4%;
     border-radius: 10px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 96%;
+    justify-content: space-evenly;
+    
+   
 }
 
 ul {
@@ -75,6 +76,8 @@ ul {
     align-items: center;
     text-align: center;
     justify-content: center;
+   
+    
 }
 
 
@@ -97,6 +100,8 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+   
+    
 }
 
 .mc:hover {

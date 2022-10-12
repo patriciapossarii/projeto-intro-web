@@ -1,3 +1,13 @@
+const objeto0 = {
+    motorcycleModel: "F9900",
+    motorcycleBrand: "BMW",
+    motorcycleManufactureYear: 2015,
+    motorcycleEngineCapacity: 798,
+    motorcycleDocumentationIsOK: true,
+    motorcycleDetails: ["Azul", "Corrente", "Partida Elétrica", "Peso 207 Kg"],
+    motorcyclePhoto: "/Assets/f800.jpg",
+}
+
 const objeto1 = {
     motorcycleModel: "F800",
     motorcycleBrand: "BMW",
@@ -5,7 +15,7 @@ const objeto1 = {
     motorcycleEngineCapacity: 798,
     motorcycleDocumentationIsOK: true,
     motorcycleDetails: ["Azul", "Corrente", "Partida Elétrica", "Peso 207 Kg"],
-    motorcyclePhoto: "foto",
+    motorcyclePhoto: "/Assets/f800.jpg",
 }
 
 const objeto2 = {
@@ -15,7 +25,7 @@ const objeto2 = {
     motorcycleEngineCapacity: 800,
     motorcycleDocumentationIsOK: false,
     motorcycleDetails: ["Preto", "Corrente", "Partida Eletrica", "Peso 213 Kg"],
-    motorcyclePhoto: "foto",
+    motorcyclePhoto:  "/Assets/tigger.jpg",
 }
 
 const objeto3 = {
@@ -25,12 +35,20 @@ const objeto3 = {
     motorcycleEngineCapacity: 1250,
     motorcycleDocumentationIsOK: true,
     motorcycleDetails: ["Laranja", "Peso 303"],
-    motorcyclePhoto: "foto",
+    motorcyclePhoto: "v-road.jpg",
 }
 
 const averageManufactureYear = (objeto1.motorcycleManufactureYear + objeto2.motorcycleManufactureYear + objeto3.motorcycleManufactureYear) / 3
 
 armazenaObjetos = []
+if(objeto0.motorcycleDocumentationIsOK === true) {
+    armazenaObjetos.push(objeto0)
+    console.log("Item adicionado com sucesso!")
+}
+else {
+    alert("Item NÃO adicionado! Favor verificar com o setor de cadastro")
+}
+
 if (objeto1.motorcycleDocumentationIsOK === true) {
     armazenaObjetos.push(objeto1)
     console.log("Item adicionado com sucesso!")
@@ -53,19 +71,22 @@ if (objeto3.motorcycleDocumentationIsOK === true) {
 for (i = 0; i <= armazenaObjetos.length; i++) {
     console.log("Itens adicionados com sucesso-!:", armazenaObjetos[i])
 }
-//console.log(`================= SEMANA 3 - ITEM 1 E 2 ===========================`)
+console.log(`================= SEMANA 3 - ITEM 1 E 2 ===========================`)
 
-for (let i of armazenaObjetos) {
-    console.log(`${i.motorcycleModel.toUpperCase()}
+const retornaArmazenaObjetos = (motos) => {
+    for (let i of motos) {
+        console.log(`${i.motorcycleModel.toUpperCase()}
     Modelo: ${i.motorcycleBrand}
     Marca: ${i.motorcycleManufactureYear}
     Capacidade do motor: ${i.motorcycleEngineCapacity}
     A documentação estpa OK? ${i.motorcycleDocumentationIsOK}
     Detalhes: ${i.motorcycleDetails.toString()}`)
+        return retornaArmazenaObjetos
+    }
 }
 
+retornaArmazenaObjetos(armazenaObjetos)
 
-console.log(armazenaObjetos)
 
 console.log(`================= SEMANA 3 - ITEM 3 ===========================`)
 
@@ -85,7 +106,7 @@ const filtraMarca = (recObjeto, recString) => {
     })
     return retornaObjeto
 }
-const filtro = filtraMarca(armazenaObjetos, "Harley Davidson")
+const filtro = filtraMarca(armazenaObjetos, "BMW")
 
 filtro.length != 0 ? console.log("Marca Filtrada", filtro) : alert("O item pesquisado nao existe")
 
@@ -109,3 +130,27 @@ Detalhes: ${objeto3.motorcycleDetails}
 console.log(`============================================`)
 
 console.log(`A média do ano das motos é: ${Math.round(averageManufactureYear)}`)
+
+
+//=========== DOM =========== DOM =========== DOM =========== DOM =========== DOM ===========
+
+function generateListItems(arg) {
+    let items = ''
+    for (let i = 0; i < arg.length; i++) {
+        items += `<section class="mc"><img src=${arg[i].motorcyclePhoto}><ul> `;
+        items += ` ${arg[i].motorcycleBrand}`;
+        items += `<li> Modelo:  ${arg[i].motorcycleModel}</li>`;
+        items += `<li> Ano de Fabricação: ${arg[i].motorcycleManufactureYear}</li>`;
+        items += `<li> Capacidade do Motor: ${arg[i].motorcycleEngineCapacity} </li>`;
+        items += `<li> Detalhes: ${arg[i].motorcycleDetails.toString()}</li></ul></section>`;
+        
+        console.log("passei")
+    }
+    return items;
+
+}
+
+function insereItem(event) {
+    document.getElementById("lista").innerHTML = generateListItems(filtro)
+    input.value = "" //extra
+}
